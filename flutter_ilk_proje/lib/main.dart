@@ -22,8 +22,9 @@ class MyHomePage extends StatelessWidget {
   final String fiftyUrl = 'https://www.skype.com';
 
   Future<void> _launchUrl(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrl(Uri.parse(url))) {
+      // canLaunch yerine canLaunchUrl kullanın
+      await launchUrl(Uri.parse(url)); // launch yerine launchUrl kullanın
     } else {
       print('Hata: $url açılamadı.');
     }
@@ -41,12 +42,16 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Center(
         child: Container(
+          width: 1250,
+          height: 1000,
+          alignment: Alignment.bottomCenter,
+          color: const Color.fromARGB(255, 219, 216, 184),
           padding: EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Liklerimiz!',
+                'Linklerimiz!',
                 style: TextStyle(fontSize: 24.0),
               ),
               SizedBox(height: 20.0),
